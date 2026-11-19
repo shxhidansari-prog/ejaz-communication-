@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wallcraft | Car Posters</title>
+<meta name="description" content="Original car wall posters on thick matte paper. Order on WhatsApp.">
+<style>
+:root{--bg:#0e0f12;--card:#17191e;--line:#262932;--text:#f2f3f5;--mute:#9aa0ac;--accent:#ff4d2e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:0;z-index:20;background:rgba(14,15,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;letter-spacing:.5px;font-size:20px}
+.logo span{color:var(--accent)}
+.cartbtn{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:14px}
+.hero{padding:56px 0 32px}
+.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;max-width:14ch}
+.hero p{color:var(--mute);margin:14px 0 22px;max-width:46ch}
+.btn{display:inline-block;background:var(--accent);color:#fff;border-radius:10px;padding:12px 20px;font-weight:700;border:0;cursor:pointer;font-size:15px}
+.perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.perks span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--mute)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 16px}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:14px}
+.chip.on{background:var(--text);color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;padding-bottom:48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.art{aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+.art svg{width:90%;margin-bottom:18%}
+.art b{position:absolute;top:12px;left:14px;font-size:11px;letter-spacing:2px;opacity:.85}
+.art i{position:absolute;top:34px;left:14px;font-style:normal;font-weight:900;font-size:34px;opacity:.9}
+.info{padding:12px;display:flex;flex-direction:column;gap:8px;flex:1}
+.info h3{font-size:15px}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}
+.sz{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:8px;padding:4px 9px;font-size:12px;cursor:pointer}
+.sz.on{border-color:var(--accent);background:var(--accent)}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.price{font-weight:800;font-size:18px}
+.add{background:var(--text);color:#000;border:0;border-radius:8px;padding:8px 12px;font-weight:700;cursor:pointer;font-size:13px}
+.deal{background:var(--card);border:1px dashed var(--accent);border-radius:12px;padding:16px;margin-bottom:28px;font-size:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:13px}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(400px,100%);background:#121317;border-left:1px solid var(--line);transform:translateX(100%);transition:.25s;z-index:40;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px;border-bottom:1px solid var(--line);font-weight:700}
+.dh button{background:none;border:0;color:var(--text);font-size:22px;cursor:pointer}
+.items{flex:1;overflow:auto;padding:12px 16px}
+.it{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:24px;height:24px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.df{padding:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.df input,.df textarea{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;color:var(--text);font:inherit;width:100%}
+.tot{display:flex;justify-content:space-between;font-weight:800}
+.note{font-size:12px;color:var(--mute)}
+.empty{color:var(--mute);text-align:center;padding:40px 0}
+.shade{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:30;display:none}
+.shade.open{display:block}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">WALL<span>CRAFT</span></a>
+  <button class="cartbtn" id="openCart">Cart (<span id="count">0</span>)</button>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Posters for your wall.</h1>
+    <p>Original car designs on thick matte paper. Pick a size, add to cart, confirm your order on WhatsApp.</p>
+    <a class="btn" href="#shop">Shop posters</a>
+    <div class="perks"><span>300gsm matte</span><span>Ships across India</span><span>COD available</span><span>Easy WhatsApp order</span></div>
+  </section>
+
+  <section id="shop">
+    <div class="deal"><b>Offer:</b> <span id="dealText"></span></div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<footer><div class="wrap">&copy; <span id="yr"></span> Wallcraft. All designs are original artwork. Not affiliated with any car brand.</div></footer>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><span>Your cart</span><button id="closeCart" aria-label="Close">&times;</button></div>
+  <div class="items" id="items"></div>
+  <div class="df">
+    <div class="tot"><span>Total</span><span id="total">Rs. 0</span></div>
+    <input id="cname" placeholder="Your name">
+    <textarea id="caddr" rows="3" placeholder="Full delivery address with pincode"></textarea>
+    <button class="btn" id="checkout">Order on WhatsApp</button>
+    <div class="note">You'll confirm payment (UPI / COD) with us on WhatsApp.</div>
+  </div>
+</aside>
+
+<script>
+/* ====== EDIT THESE ====== */
+const CONFIG = {
+  store: "Wallcraft",
+  whatsapp: "919999999999",           // your number with country code, no + or spaces
+  deal: "Buy 4 posters, get 1 free (example, edit in CONFIG)",
+  sizes: { "A5": 79, "A4": 119, "A3": 199, "13x19": 249 }  // placeholder prices, set your own
+};
+const PRODUCTS = [
+  {id:1,name:"Midnight Coupe",cat:"Sports",n:"01",c:["#1b1f3a","#e0457b"]},
+  {id:2,name:"Desert Drift",cat:"JDM",n:"02",c:["#3a1f12","#ffb347"]},
+  {id:3,name:"Track Day",cat:"Racing",n:"03",c:["#0f2a1f","#36d6a0"]},
+  {id:4,name:"Neon Garage",cat:"JDM",n:"04",c:["#1a1033","#6a5cff"]},
+  {id:5,name:"Classic Muscle",cat:"Classic",n:"05",c:["#2b1212","#ff4d2e"]},
+  {id:6,name:"Silver Streak",cat:"Sports",n:"06",c:["#1c2430","#9fb4cc"]},
+  {id:7,name:"Pit Lane",cat:"Racing",n:"07",c:["#2a2410","#ffd23f"]},
+  {id:8,name:"Old Soul",cat:"Classic",n:"08",c:["#1f1a14","#c9a27a"]}
+];
+/* ======================== */
+
+const car = '<svg viewBox="0 0 200 80" fill="currentColor"><path d="M8 56Q10 42 36 38L60 23Q80 14 116 17Q146 19 162 36L186 42Q196 46 193 56Z"/><circle cx="50" cy="58" r="12" fill="#0b0b0d" stroke="currentColor" stroke-width="4"/><circle cx="150" cy="58" r="12" fill="#0b0b0d" stroke="currentColor" stroke-width="4"/></svg>';
+const money = v => "Rs. " + v;
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("cart") || "[]"); } catch(e) {}
+const sel = {}; PRODUCTS.forEach(p => sel[p.id] = Object.keys(CONFIG.sizes)[1]);
+let cat = "All";
+
+document.getElementById("dealText").textContent = CONFIG.deal;
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+function renderFilters(){
+  const cats = ["All", ...new Set(PRODUCTS.map(p => p.cat))];
+  const f = document.getElementById("filters");
+  f.innerHTML = cats.map(c => `<button class="chip ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join("");
+  f.querySelectorAll(".chip").forEach(b => b.onclick = () => { cat = b.dataset.c; renderFilters(); renderGrid(); });
+}
+function renderGrid(){
+  const g = document.getElementById("grid");
+  g.innerHTML = PRODUCTS.filter(p => cat==="All" || p.cat===cat).map(p => `
+    <div class="card">
+      <div class="art" style="background:linear-gradient(160deg,${p.c[0]},#08080a);color:${p.c[1]}">
+        <b>${p.cat.toUpperCase()}</b><i>${p.n}</i>${car}
+      </div>
+      <div class="info">
+        <h3>${p.name}</h3>
+        <div class="sizes">${Object.keys(CONFIG.sizes).map(s => `<button class="sz ${sel[p.id]===s?"on":""}" data-p="${p.id}" data-s="${s}">${s}</button>`).join("")}</div>
+        <div class="row"><span class="price">${money(CONFIG.sizes[sel[p.id]])}</span><button class="add" data-p="${p.id}">Add</button></div>
+      </div>
+    </div>`).join("");
+  g.querySelectorAll(".sz").forEach(b => b.onclick = () => { sel[b.dataset.p] = b.dataset.s; renderGrid(); });
+  g.querySelectorAll(".add").forEach(b => b.onclick = () => add(+b.dataset.p));
+}
+function save(){ try { localStorage.setItem("cart", JSON.stringify(cart)); } catch(e) {} }
+function add(id){
+  const size = sel[id], k = id + "|" + size;
+  const ex = cart.find(i => i.k === k);
+  if (ex) ex.q++; else cart.push({k, id, size, q:1});
+  save(); renderCart(); openCart();
+}
+function total(){ return cart.reduce((t,i) => t + CONFIG.sizes[i.size]*i.q, 0); }
+function renderCart(){
+  document.getElementById("count").textContent = cart.reduce((t,i) => t+i.q, 0);
+  const el = document.getElementById("items");
+  if (!cart.length) el.innerHTML = '<div class="empty">Your cart is empty.</div>';
+  else el.innerHTML = cart.map(i => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return `<div class="it"><div><div>${p.name}</div><div class="note">Size ${i.size}</div>
+      <div class="qty"><button data-k="${i.k}" data-d="-1">-</button>${i.q}<button data-k="${i.k}" data-d="1">+</button></div></div>
+      <div>${money(CONFIG.sizes[i.size]*i.q)}</div></div>`;
+  }).join("");
+  el.querySelectorAll(".qty button").forEach(b => b.onclick = () => {
+    const it = cart.find(x => x.k === b.dataset.k); it.q += +b.dataset.d;
+    cart = cart.filter(x => x.q > 0); save(); renderCart();
+  });
+  document.getElementById("total").textContent = money(total());
+}
+function openCart(){ document.getElementById("drawer").classList.add("open"); document.getElementById("shade").classList.add("open"); }
+function closeCart(){ document.getElementById("drawer").classList.remove("open"); document.getElementById("shade").classList.remove("open"); }
+document.getElementById("openCart").onclick = openCart;
+document.getElementById("closeCart").onclick = closeCart;
+document.getElementById("shade").onclick = closeCart;
+
+document.getElementById("checkout").onclick = () => {
+  if (!cart.length) return alert("Your cart is empty.");
+  const name = document.getElementById("cname").value.trim();
+  const addr = document.getElementById("caddr").value.trim();
+  if (!name || !addr) return alert("Please enter your name and address.");
+  const lines = cart.map(i => {
+    const p = PRODUCTS.find(x => x.id === i.id);
+    return `- ${p.name} (${i.size}) x${i.q} = ${money(CONFIG.sizes[i.size]*i.q)}`;
+  }).join("\n");
+  const msg = `New order from ${CONFIG.store}\n\n${lines}\n\nTotal: ${money(total())}\n\nName: ${name}\nAddress: ${addr}`;
+  window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+};
+
+renderFilters(); renderGrid(); renderCart();
+</script>
+</body>
+</html>
